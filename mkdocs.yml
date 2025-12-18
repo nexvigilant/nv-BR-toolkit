@@ -31,10 +31,13 @@ theme:
     - navigation.tracking
     - navigation.sections
     - navigation.expand
+    - navigation.top
     - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.tabs.link
   icon:
     repo: fontawesome/brands/github
   logo: https://www.nexvigilant.com/favicon.ico
@@ -44,6 +47,7 @@ nav:
   - Getting Started:
     - Overview: getting-started/overview.md
     - Learning Path: getting-started/learning-path.md
+    - Track Progress: progress.md
   - Modules:
     - 1. Leadership Briefing: modules/01-leadership-briefing.md
     - 2. Foundation: modules/02-foundation.md
@@ -56,10 +60,18 @@ nav:
   - Interactive:
     - Jupyter Notebooks: interactive/notebooks.md
     - DOOR Analysis: interactive/door-analysis.md
+    - MCDA Walkthrough: interactive/mcda-walkthrough.md
+  - Templates:
+    - Overview: templates/index.md
+    - BRAD Template: templates/brad.md
+    - Effects Table: templates/effects-table.md
+    - Value Tree: templates/value-tree.md
   - Reference:
     - Glossary: reference/glossary.md
     - CIOMS WG XII: reference/cioms-wg-xii.md
     - License: reference/license.md
+  - Contributing:
+    - Release Process: contributing/releases.md
 
 markdown_extensions:
   - admonition

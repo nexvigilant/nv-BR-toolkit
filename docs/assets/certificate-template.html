@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexVigilant B-R Toolkit - Certificate of Completion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: landscape;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+        }
+
+        .certificate {
+            width: 11in;
+            height: 8.5in;
+            background: linear-gradient(135deg, #0F2137 0%, #1E3A5F 50%, #0F2137 100%);
+            position: relative;
+            padding: 0.5in;
+            overflow: hidden;
+        }
+
+        /* Decorative border */
+        .border-outer {
+            position: absolute;
+            top: 0.25in;
+            left: 0.25in;
+            right: 0.25in;
+            bottom: 0.25in;
+            border: 3px solid #F7C948;
+            pointer-events: none;
+        }
+
+        .border-inner {
+            position: absolute;
+            top: 0.35in;
+            left: 0.35in;
+            right: 0.35in;
+            bottom: 0.35in;
+            border: 1px solid #F7C948;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Corner decorations */
+        .corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0.3;
+        }
+
+        .corner-tl { top: 0.4in; left: 0.4in; }
+        .corner-tr { top: 0.4in; right: 0.4in; transform: rotate(90deg); }
+        .corner-bl { bottom: 0.4in; left: 0.4in; transform: rotate(-90deg); }
+        .corner-br { bottom: 0.4in; right: 0.4in; transform: rotate(180deg); }
+
+        .corner svg {
+            width: 100%;
+            height: 100%;
+            fill: #F7C948;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            padding: 0.3in 0.5in;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #F7C948;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .certificate-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #F7C948;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .certificate-subtitle {
+            font-size: 14px;
+            color: #B8D4E8;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .presented-to {
+            font-size: 14px;
+            color: #B8D4E8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .recipient-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: #F7C948;
+            border-bottom: 2px solid #F7C948;
+            padding: 10px 60px;
+            min-width: 400px;
+            margin: 10px 0;
+        }
+
+        .recipient-name:empty::before {
+            content: "Your Name Here";
+            color: #B8D4E8;
+            opacity: 0.5;
+        }
+
+        .achievement-text {
+            font-size: 16px;
+            color: #B8D4E8;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .toolkit-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #F7C948;
+            margin: 15px 0;
+        }
+
+        .modules-completed {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            max-width: 500px;
+        }
+
+        .module-badge {
+            background: rgba(247, 201, 72, 0.1);
+            border: 1px solid #F7C948;
+            color: #F7C948;
+            padding: 4px 12px;
+            font-size: 11px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .signature-block {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .signature-line {
+            border-top: 1px solid #F7C948;
+            width: 200px;
+            margin: 0 auto 5px;
+        }
+
+        .signature-label {
+            font-size: 11px;
+            color: #B8D4E8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .date-block {
+            text-align: center;
+        }
+
+        .date-value {
+            font-size: 14px;
+            color: #F7C948;
+            font-weight: 500;
+            margin-bottom: 5px;
+            padding: 5px 20px;
+            border-bottom: 1px solid #F7C948;
+        }
+
+        .date-value:empty::before {
+            content: "Date";
+            color: #B8D4E8;
+            opacity: 0.5;
+        }
+
+        .credential-id {
+            font-size: 10px;
+            color: #B8D4E8;
+            opacity: 0.6;
+            margin-top: 10px;
+        }
+
+        /* Print instructions */
+        .print-instructions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1E3A5F;
+            color: #B8D4E8;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .print-instructions button {
+            background: #F7C948;
+            color: #0F2137;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .print-instructions button:hover {
+            background: #FFE082;
+            transform: scale(1.05);
+        }
+
+        @media print {
+            .print-instructions {
+                display: none;
+            }
+        }
+
+        /* Editable fields styling */
+        [contenteditable="true"] {
+            outline: none;
+        }
+
+        [contenteditable="true"]:focus {
+            background: rgba(247, 201, 72, 0.1);
+            border-radius: 4px;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            position: absolute;
+            bottom: 0.5in;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8px;
+            color: #B8D4E8;
+            opacity: 0.4;
+            text-align: center;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate">
+        <!-- Decorative borders -->
+        <div class="border-outer"></div>
+        <div class="border-inner"></div>
+
+        <!-- Corner decorations -->
+        <div class="corner corner-tl">
+            <svg viewBox="0 0 60 60"><path d="M0 60 L0 0 L60 0 L60 10 L10 10 L10 60 Z"/></svg>
+        </div>
+        <div class="corner corner-tr">
+            <svg viewBox="0 0 60 60"><path d="M0 60 L0 0 L60 0 L60 10 L10 10 L10 60 Z"/></svg>
+        </div>
+        <div class="corner corner-bl">
+            <svg viewBox="0 0 60 60"><path d="M0 60 L0 0 L60 0 L60 10 L10 10 L10 60 Z"/></svg>
+        </div>
+        <div class="corner corner-br">
+            <svg viewBox="0 0 60 60"><path d="M0 60 L0 0 L60 0 L60 10 L10 10 L10 60 Z"/></svg>
+        </div>
+
+        <div class="content">
+            <!-- Header -->
+            <div class="header">
+                <div class="logo-text">NexVigilant</div>
+                <h1 class="certificate-title">Certificate</h1>
+                <p class="certificate-subtitle">of Completion</p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <p class="presented-to">This is to certify that</p>
+
+                <div class="recipient-name" contenteditable="true"></div>
+
+                <p class="achievement-text">
+                    has successfully completed all modules of the
+                </p>
+
+                <div class="toolkit-name">Benefit-Risk Intelligence Toolkit</div>
+
+                <div class="modules-completed">
+                    <span class="module-badge">Leadership</span>
+                    <span class="module-badge">Foundation</span>
+                    <span class="module-badge">Decision Support</span>
+                    <span class="module-badge">Templates</span>
+                    <span class="module-badge">Visualization</span>
+                    <span class="module-badge">Case Studies</span>
+                    <span class="module-badge">Competency</span>
+                    <span class="module-badge">Regulatory</span>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <p class="signature-label">NexVigilant</p>
+                </div>
+
+                <div class="date-block">
+                    <div class="date-value" contenteditable="true"></div>
+                    <p class="signature-label">Date of Completion</p>
+                </div>
+
+                <div class="signature-block">
+                    <div class="credential-id">Credential ID: NV-BR-<span id="credentialId"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <p class="disclaimer">
+            This certificate is provided for educational purposes only and does not constitute professional certification.
+            For regulatory submissions, proper validation by qualified professionals is required.
+        </p>
+    </div>
+
+    <!-- Print Instructions (hidden when printing) -->
+    <div class="print-instructions">
+        <span>Click the editable fields to add your name and date, then print</span>
+        <button onclick="window.print()">Print Certificate</button>
+    </div>
+
+    <script>
+        // Generate a random credential ID
+        function generateCredentialId() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let id = '';
+            for (let i = 0; i < 8; i++) {
+                id += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return id;
+        }
+
+        document.getElementById('credentialId').textContent = generateCredentialId();
+
+        // Set today's date as default
+        const today = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        document.querySelector('.date-value').textContent = today;
+    </script>
+</body>
+</html>

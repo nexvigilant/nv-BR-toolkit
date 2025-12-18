@@ -49,3 +49,7 @@ Understanding the therapeutic context is critical:
 !!! note "Educational Note"
 
     This toolkit operationalizes CIOMS WG XII concepts for learning purposes. Refer to the original report for complete guidance. The official publication should be considered the authoritative source for regulatory and professional applications.
+
+---
+
+*NexVigilant — Empowerment Through Vigilance*

@@ -191,6 +191,9 @@
 **Placebo**
 :   An inactive treatment used as a comparator in clinical trials to control for placebo effect and establish true treatment effect.
 
+**PrOACT-URL**
+:   A structured decision-making framework with eight elements: **Pr**oblem definition, **O**bjectives identification, **A**lternatives generation, **C**onsequences assessment, **T**radeoffs evaluation, **U**ncertainty consideration, **R**isk tolerance, and **L**inked decisions. Developed by Hammond, Keeney, and Raiffa for general decision analysis.
+
 **Propensity Score**
 :   A statistical method to reduce confounding in observational studies by balancing treatment groups on measured covariates.
 
@@ -206,6 +209,9 @@
 
 **Risk Minimization Measure (RMM)**
 :   Interventions designed to reduce the probability or severity of adverse reactions. Examples: REMS (US), additional risk minimization measures (EU).
+
+**RMP (Risk Management Plan)**
+:   A document submitted to EMA describing the safety profile of a medicinal product and proposed risk minimization activities. Required for all EU marketing authorizations. Contains safety specification, pharmacovigilance plan, and risk minimization measures. See [Module 8: Regulatory Reference](../modules/08-regulatory-reference.md).
 
 **Robustness**
 :   The stability of results across different assumptions, methods, or subgroups. Sensitivity analyses test robustness of B-R conclusions.
@@ -301,3 +307,7 @@ Benefit-Risk
 ---
 
 *This glossary is provided for educational purposes. For regulatory applications, refer to official guidance documents and organizational SOPs.*
+
+---
+
+*NexVigilant — Empowerment Through Vigilance*

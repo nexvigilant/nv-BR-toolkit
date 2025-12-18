@@ -1,8 +1,11 @@
 # NexVigilant Benefit-Risk Intelligence Toolkit
-# Python dependencies for DOOR Analysis and visualization tools
+# Python dependencies for DOOR Analysis, MCDA, and visualization tools
 #
 # Install: pip install -r requirements.txt
-# Or with uv: uv pip install -r requirements.txt
+# Or with uv (faster): uv pip install -r requirements.txt
+#
+# Educational Use Only
+# NexVigilant | Empowerment Through Vigilance
 
 # Core scientific computing
 numpy>=1.24.0,<2.0.0
@@ -11,12 +14,18 @@ scipy>=1.10.0,<2.0.0
 
 # Visualization
 matplotlib>=3.7.0,<4.0.0
+seaborn>=0.12.0,<1.0.0  # Enhanced statistical plots
 
-# Jupyter notebooks (optional, for interactive learning)
+# Jupyter notebooks (for interactive learning)
 jupyter>=1.0.0
 notebook>=7.0.0
 ipykernel>=6.0.0
 
+# Notebook validation and execution (for CI/CD)
+nbconvert>=7.0.0,<8.0.0
+nbformat>=5.0.0,<6.0.0
+
 # Development/Testing (optional)
 pytest>=7.0.0
 pytest-cov>=4.0.0
+flake8>=6.0.0

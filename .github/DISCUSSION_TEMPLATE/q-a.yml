@@ -1,0 +1,59 @@
+title: "[Q&A] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## NexVigilant B-R Toolkit Q&A
+
+        Ask questions about benefit-risk assessment methodologies, toolkit usage, or module content.
+
+        **Before posting:**
+        - Check the [Glossary](https://nexvigilant.github.io/nv-BR-toolkit/reference/glossary/) for term definitions
+        - Review relevant module documentation
+        - Search existing discussions for similar questions
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic Area
+      description: Which area does your question relate to?
+      options:
+        - Module 1 - Leadership Briefing
+        - Module 2 - Foundation
+        - Module 3 - Decision Support
+        - Module 4 - Assessment Templates
+        - Module 5 - Visualization Tools
+        - Module 6 - Case Studies
+        - Module 7 - Competency Assessment
+        - Module 8 - Regulatory Reference
+        - Jupyter Notebooks (DOOR/MCDA)
+        - Templates (BRAD/Effects Table/Value Tree)
+        - General B-R Methodology
+        - Technical/Installation Issues
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Describe your question in detail...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (Optional)
+      description: Any additional context that might help answer your question?
+      placeholder: e.g., specific therapeutic area, regulatory region, your role...
+
+  - type: checkboxes
+    id: disclaimer
+    attributes:
+      label: Educational Disclaimer
+      options:
+        - label: I understand this toolkit is for educational purposes only and should not be used for regulatory submissions without proper validation.
+          required: true

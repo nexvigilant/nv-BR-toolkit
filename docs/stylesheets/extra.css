@@ -101,3 +101,65 @@
 .md-footer-meta {
   background: rgba(30, 30, 46, 0.95);
 }
+
+/* Progress page badge cards */
+.md-typeset .grid.cards > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.md-typeset .grid.cards > ul > li {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.15);
+  transform: translateY(-2px);
+}
+
+.md-typeset .grid.cards > ul > li img {
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Badge image styling */
+.md-typeset img[alt*="Badge"] {
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.md-typeset img[alt*="Badge"]:hover {
+  transform: scale(1.05);
+}
+
+/* Checklist in cards */
+.md-typeset .grid.cards .task-list-control {
+  margin-right: 0.5rem;
+}
+
+/* Module completion master badge */
+.md-typeset img[alt="Toolkit Master Badge"] {
+  filter: drop-shadow(0 4px 20px rgba(247, 201, 72, 0.3));
+}
+
+/* Unlocked badge animation */
+@keyframes badgeUnlock {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.badge-unlocked {
+  animation: badgeUnlock 0.5s ease forwards;
+}

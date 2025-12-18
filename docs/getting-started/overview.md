@@ -68,3 +68,7 @@ Desirability of Outcome Ranking:
 ---
 
 [Continue to Learning Path →](learning-path.md){ .md-button .md-button--primary }
+
+---
+
+*NexVigilant — Empowerment Through Vigilance*

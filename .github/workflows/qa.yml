@@ -1,0 +1,194 @@
+name: QA Testing Suite
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'notebooks/**'
+      - 'templates/**'
+      - 'mkdocs.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'notebooks/**'
+      - 'templates/**'
+      - 'mkdocs.yml'
+  workflow_dispatch:  # Manual trigger
+    inputs:
+      checks:
+        description: 'Checks to run (comma-separated or "all")'
+        required: false
+        default: 'all'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  qa-suite:
+    name: Run QA Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for link validation
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install requests beautifulsoup4 lxml
+
+      - name: Run QA Suite
+        id: qa
+        run: |
+          # Determine which checks to run
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            CHECKS="${{ github.event.inputs.checks }}"
+          else
+            CHECKS="all"
+          fi
+
+          # Run QA suite and capture output
+          python scripts/qa_suite.py --checks $CHECKS --output qa_report.json --verbose 2>&1 | tee qa_output.txt
+
+          # Check exit code
+          QA_EXIT_CODE=${PIPESTATUS[0]}
+          echo "exit_code=$QA_EXIT_CODE" >> $GITHUB_OUTPUT
+
+          # Parse results for summary
+          if [ -f qa_report.json ]; then
+            PASSED=$(python -c "import json; r=json.load(open('qa_report.json')); print(r.get('summary',{}).get('passed',0))")
+            FAILED=$(python -c "import json; r=json.load(open('qa_report.json')); print(r.get('summary',{}).get('failed',0))")
+            WARNINGS=$(python -c "import json; r=json.load(open('qa_report.json')); print(r.get('summary',{}).get('warnings',0))")
+            echo "passed=$PASSED" >> $GITHUB_OUTPUT
+            echo "failed=$FAILED" >> $GITHUB_OUTPUT
+            echo "warnings=$WARNINGS" >> $GITHUB_OUTPUT
+          fi
+
+          exit $QA_EXIT_CODE
+        continue-on-error: true
+
+      - name: Generate Summary
+        run: |
+          echo "## 🔍 QA Testing Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.qa.outputs.exit_code }}" = "0" ]; then
+            echo "### ✅ All Checks Passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⚠️ Issues Found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| ✅ Passed | ${{ steps.qa.outputs.passed }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ❌ Failed | ${{ steps.qa.outputs.failed }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⚠️ Warnings | ${{ steps.qa.outputs.warnings }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### Detailed Output" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat qa_output.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload QA Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-report
+          path: |
+            qa_report.json
+            qa_output.txt
+          retention-days: 30
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const output = fs.readFileSync('qa_output.txt', 'utf8');
+            const passed = '${{ steps.qa.outputs.passed }}';
+            const failed = '${{ steps.qa.outputs.failed }}';
+            const warnings = '${{ steps.qa.outputs.warnings }}';
+            const exitCode = '${{ steps.qa.outputs.exit_code }}';
+
+            const status = exitCode === '0' ? '✅ All Checks Passed' : '⚠️ Issues Found';
+
+            const body = `## 🔍 QA Testing Results
+
+            ### ${status}
+
+            | Metric | Count |
+            |--------|-------|
+            | ✅ Passed | ${passed} |
+            | ❌ Failed | ${failed} |
+            | ⚠️ Warnings | ${warnings} |
+
+            <details>
+            <summary>View Detailed Output</summary>
+
+            \`\`\`
+            ${output.substring(0, 60000)}
+            \`\`\`
+
+            </details>
+
+            ---
+            *NexVigilant B-R Toolkit QA Suite*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      - name: Fail if checks failed
+        if: steps.qa.outputs.exit_code != '0'
+        run: |
+          echo "QA checks failed. See report for details."
+          exit 1
+
+  link-check:
+    name: External Link Validation
+    runs-on: ubuntu-latest
+    # Only run on schedule or manual trigger (expensive check)
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress './docs/**/*.md' './README.md'
+          fail: false  # Don't fail on external link issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Issue on Broken Links
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔗 Broken links detected',
+              body: 'The link checker has found broken links. Please review the workflow run for details.',
+              labels: ['documentation', 'bug']
+            });

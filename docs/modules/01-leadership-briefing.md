@@ -213,4 +213,14 @@ Where does your organization stand?
 
 ---
 
+!!! warning "Educational Disclaimer"
+
+    This module is provided for **educational purposes only**. Leadership decisions should be supported by your organization's regulatory affairs and pharmacovigilance experts.
+
+---
+
 [Continue to Module 2: Foundation →](02-foundation.md){ .md-button .md-button--primary }
+
+---
+
+**NexVigilant** | *Empowerment Through Vigilance*

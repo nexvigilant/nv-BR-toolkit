@@ -216,3 +216,7 @@ print(door.generate_report())
 
 [Launch the Interactive Notebook :material-rocket-launch:](https://colab.research.google.com/github/nexvigilant/nv-BR-toolkit/blob/main/notebooks/DOOR_Analysis_Tutorial.ipynb){ .md-button .md-button--primary }
 [Back to Modules](../modules/01-leadership-briefing.md){ .md-button }
+
+---
+
+*NexVigilant — Empowerment Through Vigilance*

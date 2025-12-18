@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 250 250">
+  <defs>
+    <linearGradient id="goldPremium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="50%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+    <linearGradient id="navyDeep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A5F"/>
+      <stop offset="100%" style="stop-color:#0A1929"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer decorative ring -->
+  <circle cx="125" cy="125" r="120" fill="none" stroke="url(#goldPremium)" stroke-width="6"/>
+  <circle cx="125" cy="125" r="112" fill="none" stroke="url(#goldPremium)" stroke-width="2"/>
+
+  <!-- Inner circle -->
+  <circle cx="125" cy="125" r="105" fill="url(#navyDeep)"/>
+
+  <!-- Star decorations around the edge -->
+  <g fill="#F7C948" filter="url(#glow)">
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(0, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(45, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(90, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(135, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(180, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(225, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(270, 125, 125)"/>
+    <polygon points="125,15 128,25 138,25 130,32 133,42 125,36 117,42 120,32 112,25 122,25" transform="rotate(315, 125, 125)"/>
+  </g>
+
+  <!-- Central emblem: Shield with balance scale -->
+  <g transform="translate(75, 50)" filter="url(#glow)">
+    <!-- Shield -->
+    <path d="M50 0 L95 15 L95 55 Q95 85 50 105 Q5 85 5 55 L5 15 Z"
+          fill="none" stroke="#F7C948" stroke-width="4"/>
+    <path d="M50 10 L85 22 L85 52 Q85 77 50 93 Q15 77 15 52 L15 22 Z"
+          fill="#0A1929"/>
+
+    <!-- Balance scale inside shield -->
+    <g fill="#F7C948">
+      <rect x="47" y="25" width="6" height="45"/>
+      <rect x="30" y="65" width="40" height="5"/>
+      <polygon points="50,28 20,43 25,48 50,35 75,48 80,43"/>
+      <circle cx="22" cy="50" r="10" fill="none" stroke="#F7C948" stroke-width="2"/>
+      <circle cx="78" cy="50" r="10" fill="none" stroke="#F7C948" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Text -->
+  <text x="125" y="175" text-anchor="middle" fill="#F7C948" font-family="Arial, sans-serif" font-size="14" font-weight="bold">TOOLKIT MASTER</text>
+  <text x="125" y="195" text-anchor="middle" fill="#B8D4E8" font-family="Arial, sans-serif" font-size="11">All 8 Modules Complete</text>
+
+  <!-- NexVigilant branding -->
+  <text x="125" y="215" text-anchor="middle" fill="#F7C948" font-family="Arial, sans-serif" font-size="10" opacity="0.7">NEXVIGILANT</text>
+  <text x="125" y="227" text-anchor="middle" fill="#B8D4E8" font-family="Arial, sans-serif" font-size="8" opacity="0.5">B-R Intelligence Toolkit</text>
+</svg>

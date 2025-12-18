@@ -149,3 +149,7 @@ flowchart TD
 ---
 
 [Start with Module 1 →](../modules/01-leadership-briefing.md){ .md-button .md-button--primary }
+
+---
+
+*NexVigilant — Empowerment Through Vigilance*
