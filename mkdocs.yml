@@ -41,7 +41,7 @@ theme:
   icon:
     repo: fontawesome/brands/github
   logo: https://www.nexvigilant.com/nexvigilant-brand.svg
-  favicon: https://www.nexvigilant.com/favicon.ico
+  favicon: assets/images/favicon.ico
 
 nav:
   - Home: index.md
