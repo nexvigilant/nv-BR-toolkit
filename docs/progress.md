@@ -24,7 +24,7 @@ Complete each module to earn your badges. Use the checkboxes below to track your
 
     [:octicons-arrow-right-24: Start Module](modules/01-leadership-briefing.md)
 
--   :material-foundation:{ .lg .middle } **Module 2: B-R Foundation**
+-   :material-library:{ .lg .middle } **Module 2: B-R Foundation**
 
     ---
 
