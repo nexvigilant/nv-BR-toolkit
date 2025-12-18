@@ -52,29 +52,21 @@ jobs:
       - name: Run QA Suite
         id: qa
         run: |
-          # Determine which checks to run
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            CHECKS="${{ github.event.inputs.checks }}"
-          else
-            CHECKS="all"
-          fi
-
-          # Run QA suite and capture output
-          python scripts/qa_suite.py --checks $CHECKS --output qa_report.json --verbose 2>&1 | tee qa_output.txt
-
-          # Check exit code
+          # Run QA suite with verbose output for humans
+          python scripts/qa_suite.py --verbose 2>&1 | tee qa_output.txt
           QA_EXIT_CODE=${PIPESTATUS[0]}
+
+          # Also run with JSON output for parsing
+          python scripts/qa_suite.py --json > qa_report.json 2>/dev/null || echo '{"passed":0,"failed":1}' > qa_report.json
+
           echo "exit_code=$QA_EXIT_CODE" >> $GITHUB_OUTPUT
 
           # Parse results for summary
-          if [ -f qa_report.json ]; then
-            PASSED=$(python -c "import json; r=json.load(open('qa_report.json')); print(r.get('summary',{}).get('passed',0))")
-            FAILED=$(python -c "import json; r=json.load(open('qa_report.json')); print(r.get('summary',{}).get('failed',0))")
-            WARNINGS=$(python -c "import json; r=json.load(open('qa_report.json')); print(r.get('summary',{}).get('warnings',0))")
-            echo "passed=$PASSED" >> $GITHUB_OUTPUT
-            echo "failed=$FAILED" >> $GITHUB_OUTPUT
-            echo "warnings=$WARNINGS" >> $GITHUB_OUTPUT
-          fi
+          PASSED=$(python -c "import json; print(json.load(open('qa_report.json')).get('passed',0))" 2>/dev/null || echo "0")
+          FAILED=$(python -c "import json; print(json.load(open('qa_report.json')).get('failed',0))" 2>/dev/null || echo "1")
+          echo "passed=$PASSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "warnings=0" >> $GITHUB_OUTPUT
 
           exit $QA_EXIT_CODE
         continue-on-error: true
