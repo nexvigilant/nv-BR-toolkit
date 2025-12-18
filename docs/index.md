@@ -8,6 +8,18 @@ A comprehensive educational toolkit for learning benefit-risk assessment methodo
 
 ---
 
+!!! tip "🎓 NexVigilant Academy Preview"
+
+    **This toolkit represents an early preview of the learning and development materials that will be available through NexVigilant Academy.**
+
+    We're building a comprehensive capability development platform for pharmacovigilance professionals. This Benefit-Risk Intelligence Toolkit demonstrates our commitment to rigorous, evidence-based educational content.
+
+    *Please pardon our delay in the full Academy launch—our Chief Capability Officer, Dr. Vigil Alexander, took a short holiday during his first week on the job. The generation simply doesn't want to WORK anymore...* :material-emoticon-wink:
+
+    **Stay tuned for the full Academy experience at [nexvigilant.com](https://www.nexvigilant.com)**
+
+---
+
 !!! danger "IMPORTANT DISCLAIMER"
 
     **This toolkit is provided strictly for EDUCATIONAL and INSTRUCTIONAL purposes only.**
@@ -97,11 +109,45 @@ graph LR
 
 ---
 
+## Why Trust This Toolkit?
+
+!!! success "Evidence-Based Methodology"
+
+    This toolkit is grounded in established frameworks and authoritative sources:
+
+    - :material-check-circle: **CIOMS Working Group XII** — The gold standard for benefit-risk assessment methodology
+    - :material-check-circle: **ICH Guidelines** — Aligned with international regulatory harmonization
+    - :material-check-circle: **Peer-Reviewed Literature** — Incorporates published research and best practices
+    - :material-check-circle: **Open Source** — Transparent, auditable, and community-reviewed
+
+### Our Commitment to Quality
+
+| Principle | How We Deliver |
+|-----------|----------------|
+| **Accuracy** | All content reviewed against primary regulatory sources |
+| **Currency** | Regular updates to reflect evolving guidance |
+| **Accessibility** | Plain-language explanations alongside technical depth |
+| **Practical Application** | Real-world case studies and hands-on exercises |
+
+---
+
 ## About NexVigilant
 
-**NexVigilant** provides strategic pharmacovigilance intelligence and capability development for pharmaceutical professionals.
+**NexVigilant** provides strategic pharmacovigilance intelligence and capability development for pharmaceutical professionals. We believe that world-class drug safety expertise shouldn't be locked behind institutional walls.
+
+### Our Mission
+
+> *To democratize pharmacovigilance education and empower the next generation of drug safety professionals with the knowledge, skills, and tools they need to protect patients worldwide.*
+
+### What Sets Us Apart
+
+- :material-brain: **Capability-Focused** — We build competencies, not just knowledge
+- :material-file-certificate: **Industry-Aligned** — Content mapped to EPA competency frameworks
+- :material-school: **Practitioner-Designed** — Created by PV professionals, for PV professionals
+- :material-open-source-initiative: **Transparency First** — Open methodologies, open resources
 
 *Empowerment Through Vigilance.*
 
 [Visit nexvigilant.com](https://www.nexvigilant.com){ .md-button .md-button--primary }
 [View on GitHub](https://github.com/nexvigilant/nv-BR-toolkit){ .md-button }
+[Join the Waitlist](https://www.nexvigilant.com/waitlist){ .md-button }
