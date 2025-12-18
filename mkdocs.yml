@@ -105,6 +105,26 @@ plugins:
       minify_html: true
 
 extra:
+  analytics:
+    provider: google
+    property: G-TTH24C5X8Q
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback! Help us improve by
+            <a href="https://github.com/nexvigilant/nv-BR-toolkit/issues/new?title=[Feedback]+{title}" target="_blank" rel="noopener">opening an issue</a>
+            if you have suggestions.
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Please
+            <a href="https://github.com/nexvigilant/nv-BR-toolkit/issues/new?title=[Feedback]+{title}" target="_blank" rel="noopener">open an issue</a>
+            to help us improve.
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/nexvigilant
