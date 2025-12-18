@@ -3,12 +3,19 @@
 :root {
   --md-primary-fg-color: #5e35b1;
   --md-accent-fg-color: #00bcd4;
+  --nex-gold: #d4af37;
+  --nex-cyan: #00bcd4;
 }
 
 /* Educational disclaimer styling */
 .md-typeset .admonition.danger {
   border-color: #ff1744;
   background-color: rgba(255, 23, 68, 0.1);
+}
+
+/* Success admonition for links */
+.md-typeset .admonition.success {
+  border-color: var(--nex-cyan);
 }
 
 /* Code blocks */
@@ -21,6 +28,10 @@
   background-color: var(--md-primary-fg-color);
 }
 
+.md-typeset .md-button--primary:hover {
+  background-color: #7c4dff;
+}
+
 /* Learning objectives checkboxes */
 .md-typeset .task-list-indicator::before {
   background-color: var(--md-accent-fg-color);
@@ -30,4 +41,63 @@
 .mermaid {
   text-align: center;
   margin: 1rem 0;
+}
+
+/* Grid layout for feature cards */
+.md-typeset .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.md-typeset .grid dt {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-typeset .grid dd {
+  margin-left: 0;
+  padding: 1rem;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  border-left: 3px solid var(--md-accent-fg-color);
+}
+
+/* Large icons in grid */
+.md-typeset .grid .lg {
+  font-size: 1.5rem;
+}
+
+/* Hero image styling */
+.hero-image {
+  display: block;
+  max-width: 300px;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 188, 212, 0.2);
+}
+
+/* Center content utility */
+.center {
+  text-align: center;
+}
+
+/* Module cards styling */
+.md-typeset table {
+  width: 100%;
+}
+
+.md-typeset table th {
+  background: var(--md-primary-fg-color);
+  color: white;
+}
+
+/* Footer branding */
+.md-footer-meta {
+  background: rgba(30, 30, 46, 0.95);
 }

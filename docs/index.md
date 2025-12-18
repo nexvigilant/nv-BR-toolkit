@@ -23,31 +23,19 @@ A comprehensive educational toolkit for learning benefit-risk assessment methodo
 
 ## What You'll Learn
 
-<div class="grid cards" markdown>
+<div class="grid" markdown>
 
--   :material-school:{ .lg .middle } **CIOMS WG XII Framework**
+:material-school:{ .lg .middle } **CIOMS WG XII Framework**
+:   Understand the comprehensive benefit-risk assessment framework established by CIOMS Working Group XII
 
-    ---
+:material-chart-tree:{ .lg .middle } **MCDA Methods**
+:   Learn Multi-Criteria Decision Analysis techniques for quantitative B-R assessment
 
-    Understand the comprehensive benefit-risk assessment framework established by CIOMS Working Group XII
+:material-scale-balance:{ .lg .middle } **DOOR Analysis**
+:   Master Desirability of Outcome Ranking for composite endpoint evaluation
 
--   :material-chart-tree:{ .lg .middle } **MCDA Methods**
-
-    ---
-
-    Learn Multi-Criteria Decision Analysis techniques for quantitative B-R assessment
-
--   :material-scale-balance:{ .lg .middle } **DOOR Analysis**
-
-    ---
-
-    Master Desirability of Outcome Ranking for composite endpoint evaluation
-
--   :material-file-document:{ .lg .middle } **Effects Tables**
-
-    ---
-
-    Build structured presentations of benefit and risk data
+:material-file-document:{ .lg .middle } **Effects Tables**
+:   Build structured presentations of benefit and risk data
 
 </div>
 
