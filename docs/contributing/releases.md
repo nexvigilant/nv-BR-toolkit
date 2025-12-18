@@ -36,7 +36,7 @@ We follow [Semantic Versioning](https://semver.org/) (SemVer):
 If you maintain a manual changelog, update `CHANGELOG.md`:
 
 ```markdown
-## [1.2.0] - 2024-12-18
+## [1.2.0] - 2025-12-18
 
 ### Added
 - New visualization tutorials

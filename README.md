@@ -231,7 +231,7 @@ This toolkit was developed with reference to:
 
 ---
 
-**Last Updated:** December 2024
+**Last Updated:** December 2025
 **Version:** 1.0
 
 *For questions about this toolkit or NexVigilant's educational offerings, please contact us at the email above.*
