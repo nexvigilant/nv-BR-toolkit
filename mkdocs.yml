@@ -62,11 +62,11 @@ nav:
     - Jupyter Notebooks: interactive/notebooks.md
     - DOOR Analysis: interactive/door-analysis.md
     - MCDA Walkthrough: interactive/mcda-walkthrough.md
-  - Templates:
-    - Overview: templates/index.md
-    - BRAD Template: templates/brad.md
-    - Effects Table: templates/effects-table.md
-    - Value Tree: templates/value-tree.md
+  - Downloads:
+    - Overview: downloads/index.md
+    - BRAD Template: downloads/brad.md
+    - Effects Table: downloads/effects-table.md
+    - Value Tree: downloads/value-tree.md
   - Reference:
     - Glossary: reference/glossary.md
     - CIOMS WG XII: reference/cioms-wg-xii.md

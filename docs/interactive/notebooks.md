@@ -108,7 +108,7 @@ No installation required! Click the "Open in Colab" badge above to run notebooks
 |----------|-------------|
 | [Module 5: Visualization Tools](../modules/05-visualization-tools.md) | Visualization guidance |
 | [Module 6: Case Studies](../modules/06-case-studies.md) | Complete worked examples |
-| [Templates](../templates/index.md) | Downloadable assessment templates |
+| [Downloads](../downloads/index.md) | Downloadable assessment templates |
 
 ---
 

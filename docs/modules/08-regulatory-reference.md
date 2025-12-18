@@ -390,7 +390,7 @@ You have completed all modules of the **Benefit-Risk Intelligence Toolkit**.
 | Resource | Purpose |
 |----------|---------|
 | [Interactive Notebooks](../interactive/notebooks.md) | Hands-on practice with Python |
-| [Templates](../templates/index.md) | Downloadable assessment tools |
+| [Downloads](../downloads/index.md) | Downloadable assessment tools |
 | [Glossary](../reference/glossary.md) | Quick terminology reference |
 
 ---

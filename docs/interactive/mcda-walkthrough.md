@@ -115,7 +115,7 @@ The notebook generates several publication-ready visualizations:
 | [DOOR Analysis Tutorial](door-analysis.md) | Companion DOOR methodology notebook |
 | [Module 5: Visualization Tools](../modules/05-visualization-tools.md) | MCDA visualization guidance |
 | [Module 6: Case Studies](../modules/06-case-studies.md) | Complete MCDA worked example |
-| [MCDA Template](../templates/effects-table.md) | Excel-based MCDA tool |
+| [MCDA Template](../downloads/effects-table.md) | Excel-based MCDA tool |
 
 ---
 
