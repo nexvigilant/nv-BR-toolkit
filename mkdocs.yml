@@ -1,0 +1,93 @@
+site_name: NexVigilant Benefit-Risk Intelligence Toolkit
+site_url: https://nexvigilant.github.io/nv-BR-toolkit/
+site_description: Educational toolkit for learning benefit-risk assessment methodologies in pharmaceutical development and pharmacovigilance.
+site_author: NexVigilant
+
+repo_name: nexvigilant/nv-BR-toolkit
+repo_url: https://github.com/nexvigilant/nv-BR-toolkit
+
+copyright: Copyright &copy; 2024 NexVigilant. For educational use only.
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+  logo: https://www.nexvigilant.com/favicon.ico
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Overview: getting-started/overview.md
+    - Learning Path: getting-started/learning-path.md
+  - Modules:
+    - 1. Leadership Briefing: modules/01-leadership-briefing.md
+    - 2. Foundation: modules/02-foundation.md
+    - 3. Decision Support: modules/03-decision-support.md
+    - 4. Assessment Templates: modules/04-assessment-templates.md
+    - 5. Visualization Tools: modules/05-visualization-tools.md
+    - 6. Case Studies: modules/06-case-studies.md
+    - 7. Competency Assessment: modules/07-competency-assessment.md
+    - 8. Regulatory Reference: modules/08-regulatory-reference.md
+  - Interactive:
+    - Jupyter Notebooks: interactive/notebooks.md
+    - DOOR Analysis: interactive/door-analysis.md
+  - Reference:
+    - Glossary: reference/glossary.md
+    - CIOMS WG XII: reference/cioms-wg-xii.md
+    - License: reference/license.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nexvigilant
+    - icon: fontawesome/solid/globe
+      link: https://www.nexvigilant.com
+
+extra_css:
+  - stylesheets/extra.css

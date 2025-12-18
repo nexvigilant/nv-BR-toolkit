@@ -1,0 +1,101 @@
+name: CI - Python Code Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+
+jobs:
+  test:
+    name: Test Python Code
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 pytest
+
+      - name: Lint with flake8
+        run: |
+          # Stop on syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Warnings for complexity
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
+
+      - name: Test DOOR analysis module
+        run: |
+          cd 06_Case_Study_Workbooks
+          python -c "
+          from door_analysis import DOORAnalysis, create_example_data
+
+          # Test 1: Create example data
+          data, hierarchy = create_example_data()
+          assert len(data) == 1000, 'Expected 1000 patients'
+          print('✅ Test 1 passed: Example data generation')
+
+          # Test 2: Initialize analysis
+          door = DOORAnalysis(outcome_hierarchy=hierarchy)
+          assert door.n_categories == 8, 'Expected 8 outcome categories'
+          print('✅ Test 2 passed: DOOR initialization')
+
+          # Test 3: Assign outcomes
+          data = door.assign_outcomes(data, outcome_column='outcome')
+          assert 'door_rank' in data.columns, 'door_rank column missing'
+          assert data['door_rank'].min() == 1, 'Min rank should be 1'
+          assert data['door_rank'].max() == 8, 'Max rank should be 8'
+          print('✅ Test 3 passed: Outcome assignment')
+
+          # Test 4: Compare treatments
+          results = door.compare_treatments(
+              data,
+              treatment_column='treatment',
+              treatment_arm='Drug A',
+              control_arm='Placebo'
+          )
+          assert 'win_ratio' in results, 'win_ratio missing from results'
+          assert 'p_value' in results, 'p_value missing from results'
+          assert results['n_pairs'] == 250000, 'Expected 250,000 pairs (500 x 500)'
+          print('✅ Test 4 passed: Treatment comparison')
+
+          # Test 5: Generate report
+          report = door.generate_report()
+          assert 'DOOR ANALYSIS RESULTS' in report, 'Report header missing'
+          print('✅ Test 5 passed: Report generation')
+
+          print('')
+          print('🎉 All tests passed!')
+          "
+
+      - name: Validate notebook can be parsed
+        run: |
+          python -c "
+          import json
+          with open('notebooks/DOOR_Analysis_Tutorial.ipynb', 'r') as f:
+              nb = json.load(f)
+          assert nb['nbformat'] == 4, 'Invalid notebook format'
+          assert len(nb['cells']) > 0, 'Notebook has no cells'
+          print('✅ Notebook validation passed')
+          "

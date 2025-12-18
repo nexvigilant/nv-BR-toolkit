@@ -1,0 +1,33 @@
+/* NexVigilant Custom Styles for MkDocs Material */
+
+:root {
+  --md-primary-fg-color: #5e35b1;
+  --md-accent-fg-color: #00bcd4;
+}
+
+/* Educational disclaimer styling */
+.md-typeset .admonition.danger {
+  border-color: #ff1744;
+  background-color: rgba(255, 23, 68, 0.1);
+}
+
+/* Code blocks */
+.md-typeset code {
+  background-color: rgba(0, 188, 212, 0.1);
+}
+
+/* Buttons */
+.md-typeset .md-button--primary {
+  background-color: var(--md-primary-fg-color);
+}
+
+/* Learning objectives checkboxes */
+.md-typeset .task-list-indicator::before {
+  background-color: var(--md-accent-fg-color);
+}
+
+/* Mermaid diagrams */
+.mermaid {
+  text-align: center;
+  margin: 1rem 0;
+}
